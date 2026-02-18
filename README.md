@@ -37,8 +37,8 @@ npm run solution-01
 | 05 | Несколько провайдеров контекста | `npm run task:05` | `npm run solution-05` |
 | 06 | Потребитель вне провайдера | `npm run task:06` | `npm run solution-06` |
 | 07 | Уведомления через контекст | `npm run task:07` | `npm run solution-07` |
-| 08 | contextType в классовом компоненте | `npm run task:08` | `npm run solution-08` |
-| 09 | useContext в функциях | `npm run task:09` | `npm run solution-09` |
+| 08 | Контекст в классовом компоненте (contextType) | `npm run task:08` | `npm run solution-08` |
+| 09 | Контекст в функциях (useContext) | `npm run task:09` | `npm run solution-09` |
 | 10 | Производительность большого списка | `npm run task:10` | `npm run solution-10` |
 
 ## Как проходить курс

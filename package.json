@@ -1,0 +1,47 @@
+{
+  "name": "react-context-basics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx}\"",
+    "play:generate": "node scripts/generate-play-commands.mjs",
+    "task:01": "cross-env VITE_ENTRY=src/01-введение-в-контекст.проблема.jsx vite",
+    "solution-01": "cross-env VITE_ENTRY=src/01-введение-в-контекст.решение.jsx vite",
+    "task:02": "cross-env VITE_ENTRY=src/02-избегаем-проброса-пропсов.проблема.jsx vite",
+    "solution-02": "cross-env VITE_ENTRY=src/02-избегаем-проброса-пропсов.решение.jsx vite",
+    "task:03": "cross-env VITE_ENTRY=src/03-callback-через-контекст.проблема.jsx vite",
+    "solution-03": "cross-env VITE_ENTRY=src/03-callback-через-контекст.решение.jsx vite",
+    "task:04": "cross-env VITE_ENTRY=src/04-скрытие-деталей-провайдера.проблема.jsx vite",
+    "solution-04": "cross-env VITE_ENTRY=src/04-скрытие-деталей-провайдера.решение.jsx vite",
+    "task:05": "cross-env VITE_ENTRY=src/05-несколько-провайдеров-контекста.проблема.jsx vite",
+    "solution-05": "cross-env VITE_ENTRY=src/05-несколько-провайдеров-контекста.решение.jsx vite",
+    "task:06": "cross-env VITE_ENTRY=src/06-потребитель-вне-провайдера.проблема.jsx vite",
+    "solution-06": "cross-env VITE_ENTRY=src/06-потребитель-вне-провайдера.решение.jsx vite",
+    "task:07": "cross-env VITE_ENTRY=src/07-уведомления-через-контекст.проблема.jsx vite",
+    "solution-07": "cross-env VITE_ENTRY=src/07-уведомления-через-контекст.решение.jsx vite",
+    "task:08": "cross-env VITE_ENTRY=src/08-contextType-в-классовом-компоненте.проблема.jsx vite",
+    "solution-08": "cross-env VITE_ENTRY=src/08-contextType-в-классовом-компоненте.решение.jsx vite",
+    "task:09": "cross-env VITE_ENTRY=src/09-useContext-в-функциях.проблема.jsx vite",
+    "solution-09": "cross-env VITE_ENTRY=src/09-useContext-в-функциях.решение.jsx vite",
+    "task:10": "cross-env VITE_ENTRY=src/10-производительность-большого-списка.проблема.jsx vite",
+    "solution-10": "cross-env VITE_ENTRY=src/10-производительность-большого-списка.решение.jsx vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "cross-env": "^10.0.0",
+    "prettier": "^3.8.0",
+    "vite": "^6.3.6"
+  }
+}

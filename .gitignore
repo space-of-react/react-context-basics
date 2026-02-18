@@ -1,0 +1,4 @@
+node_modules
+play-map.json
+./*/*.md
+src/**/*.md

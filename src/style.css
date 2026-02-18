@@ -1,0 +1,464 @@
+/* Общие стили для интерактивных уроков — улучшенный фон и компоненты */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #0a0e17;
+    --bg-elevated: #0f1420;
+    --panel: rgba(255, 255, 255, 0.04);
+    --panel-2: rgba(255, 255, 255, 0.07);
+    --text: rgba(255, 255, 255, 0.95);
+    --muted: rgba(255, 255, 255, 0.62);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-focus: rgba(255, 255, 255, 0.18);
+
+    --blue: #5b9cf9;
+    --blue-soft: rgba(91, 156, 249, 0.2);
+    --green: #2dd4a8;
+    --green-soft: rgba(45, 212, 168, 0.2);
+    --amber: #f5b042;
+    --amber-soft: rgba(245, 176, 66, 0.2);
+    --red: #f4728c;
+    --red-soft: rgba(244, 114, 140, 0.2);
+
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --shadow-panel: 0 4px 24px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    --shadow-glow: 0 0 40px -10px rgba(91, 156, 249, 0.25);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-feature-settings: 'ss01' 1, 'ss02' 1;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background 0.3s ease, color 0.2s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Фон: сетка + градиентные орбы */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 70%);
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse 100% 80% at 15% 10%, rgba(91, 156, 249, 0.18) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 60% at 85% 20%, rgba(45, 212, 168, 0.12) 0%, transparent 45%),
+        radial-gradient(ellipse 70% 50% at 50% 90%, rgba(91, 156, 249, 0.08) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+/* Светлая тема (для задания 05) */
+body[data-theme="light"] {
+    --bg: #f0f4fa;
+    --bg-elevated: #ffffff;
+    --panel: rgba(0, 0, 0, 0.03);
+    --panel-2: rgba(0, 0, 0, 0.05);
+    --text: #0f172a;
+    --muted: #475569;
+    --border: rgba(0, 0, 0, 0.08);
+    --border-focus: rgba(0, 0, 0, 0.18);
+    --shadow-panel: 0 4px 24px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+body[data-theme="light"]::before {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+body[data-theme="light"]::after {
+    background:
+        radial-gradient(ellipse 100% 80% at 15% 10%, rgba(91, 156, 249, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 60% at 85% 20%, rgba(45, 212, 168, 0.08) 0%, transparent 45%);
+}
+
+body[data-theme="light"] .panelHeader {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+body[data-theme="light"] .btn {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text);
+}
+
+body[data-theme="light"] .btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+body[data-theme="light"] .listItem,
+body[data-theme="light"] .badge,
+body[data-theme="light"] .input,
+body[data-theme="light"] .kbd {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+body[data-theme="light"] .listItem:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .listItemActive {
+    border-color: rgba(91, 156, 249, 0.35);
+    background: rgba(91, 156, 249, 0.1);
+}
+
+body[data-theme="light"] .toast {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+body[data-theme="light"] .emailBody {
+    color: #334155;
+}
+
+a {
+    color: inherit;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 0.95em;
+}
+
+/* Контейнер */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+.title {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    margin: 0 0 22px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+}
+
+/* Панели */
+.panel {
+    background: linear-gradient(180deg, var(--panel) 0%, transparent 120%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(12px);
+}
+
+.panelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.panelTitle {
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+}
+
+.panelBody {
+    padding: 14px 18px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.stack {
+    display: grid;
+    gap: 12px;
+}
+
+/* Кнопки */
+.btn {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--border-focus);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btnPrimary {
+    border-color: rgba(91, 156, 249, 0.4);
+    background: var(--blue-soft);
+}
+
+.btnPrimary:hover {
+    background: rgba(91, 156, 249, 0.28);
+    border-color: rgba(91, 156, 249, 0.5);
+    box-shadow: 0 4px 16px rgba(91, 156, 249, 0.2);
+}
+
+.btnDanger {
+    border-color: rgba(244, 114, 140, 0.4);
+    background: var(--red-soft);
+}
+
+.btnDanger:hover {
+    background: rgba(244, 114, 140, 0.25);
+    border-color: rgba(244, 114, 140, 0.5);
+}
+
+.btnSmall {
+    padding: 7px 12px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.input {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+    border-color: rgba(91, 156, 249, 0.5);
+    box-shadow: 0 0 0 3px rgba(91, 156, 249, 0.15);
+}
+
+/* Бейджи и индикаторы */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 99px;
+    background: var(--blue);
+    box-shadow: 0 0 0 3px rgba(91, 156, 249, 0.2);
+}
+
+.dotGreen {
+    background: var(--green);
+    box-shadow: 0 0 0 3px rgba(45, 212, 168, 0.2);
+}
+
+.dotAmber {
+    background: var(--amber);
+    box-shadow: 0 0 0 3px rgba(245, 176, 66, 0.2);
+}
+
+.dotRed {
+    background: var(--red);
+    box-shadow: 0 0 0 3px rgba(244, 114, 140, 0.2);
+}
+
+/* Список */
+.list {
+    display: grid;
+    gap: 10px;
+}
+
+.listItem {
+    display: grid;
+    gap: 4px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.listItem:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-focus);
+}
+
+.listItemActive {
+    border-color: rgba(91, 156, 249, 0.4);
+    background: var(--blue-soft);
+    box-shadow: 0 0 0 1px rgba(91, 156, 249, 0.15);
+}
+
+.listItemTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.listItemMeta {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.emailBody {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 14px;
+}
+
+.topBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.kbd {
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* Тосты */
+.toastHost {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: grid;
+    gap: 12px;
+    z-index: 9999;
+}
+
+.toast {
+    width: min(400px, calc(100vw - 40px));
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 24, 0.85);
+    backdrop-filter: blur(16px);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    display: grid;
+    gap: 6px;
+    box-shadow: var(--shadow-panel), 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.toastTitle {
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.toastText {
+    color: var(--muted);
+    line-height: 1.4;
+    font-size: 13px;
+}
+
+.toastRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.hint {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+/* Адаптив */
+@media (max-width: 920px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 24px 16px 40px;
+    }
+}

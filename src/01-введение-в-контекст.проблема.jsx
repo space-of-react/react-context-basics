@@ -21,7 +21,7 @@ function Header({ user }) {
 }
 
 function App() {
-    const user = { name: 'Аня', plan: 'Pro' };
+    const user = { name: 'Maxim', plan: 'Pro' };
 
     return (
         <div className="container">

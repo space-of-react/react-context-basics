@@ -4,9 +4,6 @@ import './style.css';
 
 const ThemeContext = React.createContext('dark');
 
-// Классовый компонент пока получает тему через пропсы.
-// Задание: переделай так, чтобы он читал значение из ThemeContext
-// через static contextType и this.context (проп theme не нужен).
 class ThemeLabel extends React.Component {
     render() {
         const { theme } = this.props;
@@ -40,7 +37,10 @@ function App() {
                     Классовый компонент ThemeLabel получает тему через пропсы. Переделай его так,
                     чтобы он читал значение из ThemeContext через static contextType и this.context.
                 </p>
-                <button className="btn" onClick={toggleTheme}>
+                <button
+                    className="btn"
+                    onClick={toggleTheme}
+                >
                     Переключить тему
                 </button>
             </div>

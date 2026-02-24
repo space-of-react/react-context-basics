@@ -4,7 +4,7 @@ import './style.css';
 
 function App() {
     const [theme, setTheme] = React.useState('dark');
-    const user = { name: 'Аня' };
+    const user = { name: 'Макс' };
 
     const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 

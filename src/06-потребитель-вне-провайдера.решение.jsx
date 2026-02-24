@@ -16,20 +16,23 @@ function UserBadge() {
 }
 
 function App() {
-    const defaultValue = { user: null };
+    const user = { name: 'Макс' };
 
     return (
-        <UserContext.Provider value={defaultValue}>
-            <div className="container">
+        <div className="container">
+            <UserContext.Provider value={{ user }}>
                 <div className="topBar">
                     <h1 className="title">Почта</h1>
                     <UserBadge />
                 </div>
                 <p className="subtitle">
-                    Вне провайдера Consumer получает defaultValue — показываем «Гость».
+                    В шапке бейдж внутри провайдера. Второй блок — бейдж вне провайдера.
                 </p>
+            </UserContext.Provider>
+            <div className="topBar">
+                <UserBadge />
             </div>
-        </UserContext.Provider>
+        </div>
     );
 }
 

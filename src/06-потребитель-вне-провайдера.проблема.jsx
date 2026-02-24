@@ -2,10 +2,10 @@ import React from 'react';
 
 import './style.css';
 
-const UserContext = React.createContext(null);
+const UserContext = React.createContext({ user: null });
 
 function UserBadge() {
-    const user = React.useContext(UserContext);
+    const { user } = React.useContext(UserContext);
 
     return (
         <span className="badge">
@@ -16,15 +16,16 @@ function UserBadge() {
 }
 
 function App() {
+    const user = { name: 'Макс' };
+
     return (
         <div className="container">
-            <div className="topBar">
-                <h1 className="title">Почта</h1>
-                <UserBadge />
-            </div>
-            <p className="subtitle">
-                Бейдж пользователя в шапке — если пользователя нет, показываем «Гость».
-            </p>
+            <UserContext.Provider value={{ user }}>
+                <div className="topBar">
+                    <h1 className="title">Почта</h1>
+                    <UserBadge />
+                </div>
+            </UserContext.Provider>
         </div>
     );
 }
